@@ -12,8 +12,14 @@ prompt.addEventListener("blur", function() {
     this.focus();
 });
 
+var playerData = {
+    roomAt: "House",
+    inventory: [],
+    xp: 0
+}
 function tick(input) {
-    return "input got";
+    var ctrlhelp = "Now, you can:\n> go [north, south, east, west]\n> get [item]\n> use [item in inventory]";
+    return `\nYour inventory: [${playerData.inventory.join(", ")}] \n${ctrlhelp}\n`;
 }
 
 prompt.addEventListener("keydown", function(e) {
