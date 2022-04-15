@@ -1,0 +1,15 @@
+{
+    "House": {
+        "east": "Plains",
+        "west": "Garden",
+        "items": ["book", "wand"]
+    },
+    "Garden": {
+        "east": "House",
+        "items": ["shovel"]
+    },
+    "Plains": {
+        "west": "House",
+        "items": []
+    }
+}
