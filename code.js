@@ -34,6 +34,9 @@ function tick(input) {
         if (rooms[currRoom][direction]) {
             playerData.roomAt = rooms[playerData.roomAt][cmd.param];
         }
+        else {
+            specmsg = "You can't go that way!\n";
+        }
     }
     if (cmd.name == "get") {
         var itemToGrab = cmd.param;
@@ -42,6 +45,9 @@ function tick(input) {
             playerData.inventory.push(itemToGrab);
             var index = rooms[currRoom].items.indexOf(itemToGrab);
             rooms[currRoom].items.splice(index, 1);
+        }
+        else {
+            specmsg = "You can't get that!\n";
         }
     }
     if (cmd.name == "use") {
