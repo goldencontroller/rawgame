@@ -23,6 +23,7 @@ var playerData = {
     xp: 0
 }
 function tick(input) {
+    var specmsg = "";
     var cmd = {
         name: input.split(" ")[0],
         param: input.split(" ")[1]
@@ -43,6 +44,24 @@ function tick(input) {
             rooms[currRoom].items.splice(index, 1);
         }
     }
+    if (cmd.name == "use") {
+        if (playerData.inventory.includes(cmd.param)) {
+            switch (cmd.param) {
+                case "book":
+                    specmsg = `The book says:
+THERE IS A GOLDEN APPLE IN
+THE VOLCANO, IKEN.  ONLY A
+TRUE WIZARD CAN BE ABLE TO
+OBTAIN IT.  IT IS DEFENDED
+BY A FURIOUS DRAGON!!!!!!!
+`;
+                    break;
+            }
+        }
+        else {
+            specmsg = "You don't have that!\n";
+        }
+    }
     var roomData = rooms[playerData.roomAt];
     var sights = `You see items: [${roomData.items.join(", ")}]`;
     var availDirs = [];
@@ -52,7 +71,7 @@ function tick(input) {
         }
     }
     var ctrlhelp = "Now, you can:\n> go [" + availDirs.join(", ") + "]\n> get [item]\n> use [item in backpack]";
-    return `\nYou are in the ${playerData.roomAt}\n${sights}\n\nYour backpack: [${playerData.inventory.join(", ")}] \n${ctrlhelp}\n`;
+    return `${specmsg}\nYou are in the ${playerData.roomAt}\n${sights}\n\nYour backpack: [${playerData.inventory.join(", ")}] \n${ctrlhelp}\n`;
 }
 
 prompt.addEventListener("keydown", function(e) {
