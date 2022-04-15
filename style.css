@@ -1,0 +1,14 @@
+code {
+    color: limegreen;
+    outline: none!important;
+    white-space: pre;
+}
+
+body {
+    background-color: black;
+}
+
+::selection {
+    background-color: limegreen;
+    color: black;
+}
