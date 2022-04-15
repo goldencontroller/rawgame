@@ -23,6 +23,13 @@ var playerData = {
     xp: 0
 }
 function tick(input) {
+    var cmd = {
+        name: input.split(" ")[0],
+        param: input.split(" ")[1]
+    };
+    if (cmd.name == "go") {
+        playerData.roomAt = rooms[playerData.roomAt][cmd.param];
+    }
     var roomData = rooms[playerData.roomAt];
     var sights = "You see items: " + roomData.items.join(", ");
     var ctrlhelp = "Now, you can:\n> go [north, south, east, west]\n> get [item]\n> use [item in inventory]";
