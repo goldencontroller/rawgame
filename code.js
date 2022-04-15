@@ -12,11 +12,15 @@ prompt.addEventListener("blur", function() {
     this.focus();
 });
 
+function tick(input) {
+    return "input got";
+}
+
 prompt.addEventListener("keydown", function(e) {
     if (e.key == "Enter") {
         e.preventDefault();
         term.innerText += this.innerText;
-        writeMSG("input got");
+        writeMSG(tick(this.innerText));
         this.innerText = "";
     }
 });
