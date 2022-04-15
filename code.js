@@ -28,7 +28,11 @@ function tick(input) {
         param: input.split(" ")[1]
     };
     if (cmd.name == "go") {
-        playerData.roomAt = rooms[playerData.roomAt][cmd.param];
+        var currRoom = playerData.roomAt;
+        var direction = cmd.param;
+        if (rooms[currRoom][direction]) {
+            playerData.roomAt = rooms[playerData.roomAt][cmd.param];
+        }
     }
     var roomData = rooms[playerData.roomAt];
     var sights = "You see items: " + roomData.items.join(", ");
