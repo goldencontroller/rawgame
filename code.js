@@ -34,6 +34,15 @@ function tick(input) {
             playerData.roomAt = rooms[playerData.roomAt][cmd.param];
         }
     }
+    if (cmd.name == "get") {
+        var itemToGrab = cmd.param;
+        var currRoom = playerData.roomAt;
+        if (rooms[currRoom].items.includes(itemToGrab)) {
+            playerData.inventory.push(itemToGrab);
+            var index = rooms[currRoom].items.indexOf(itemToGrab);
+            rooms[currRoom].items.splice(index, 1);
+        }
+    }
     var roomData = rooms[playerData.roomAt];
     var sights = "You see items: " + roomData.items.join(", ");
     var ctrlhelp = "Now, you can:\n> go [north, south, east, west]\n> get [item]\n> use [item in inventory]";
