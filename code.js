@@ -44,9 +44,9 @@ function tick(input) {
         }
     }
     var roomData = rooms[playerData.roomAt];
-    var sights = "You see items: " + roomData.items.join(", ");
-    var ctrlhelp = "Now, you can:\n> go [north, south, east, west]\n> get [item]\n> use [item in inventory]";
-    return `\nYou are in the ${playerData.roomAt}\n${sights}\n\nYour inventory: [${playerData.inventory.join(", ")}] \n${ctrlhelp}\n`;
+    var sights = `You see items: [${roomData.items.join(", ")}]`;
+    var ctrlhelp = "Now, you can:\n> go [north, south, east, west]\n> get [item]\n> use [item in backpack]";
+    return `\nYou are in the ${playerData.roomAt}\n${sights}\n\nYour backpack: [${playerData.inventory.join(", ")}] \n${ctrlhelp}\n`;
 }
 
 prompt.addEventListener("keydown", function(e) {
