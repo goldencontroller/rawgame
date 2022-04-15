@@ -45,7 +45,13 @@ function tick(input) {
     }
     var roomData = rooms[playerData.roomAt];
     var sights = `You see items: [${roomData.items.join(", ")}]`;
-    var ctrlhelp = "Now, you can:\n> go [north, south, east, west]\n> get [item]\n> use [item in backpack]";
+    var availDirs = [];
+    for (var dir of ["north", "south", "east", "west"]) {
+        if (roomData[dir]) {
+            availDirs.push(dir);
+        }
+    }
+    var ctrlhelp = "Now, you can:\n> go [" + availDirs.join(", ") + "]\n> get [item]\n> use [item in backpack]";
     return `\nYou are in the ${playerData.roomAt}\n${sights}\n\nYour backpack: [${playerData.inventory.join(", ")}] \n${ctrlhelp}\n`;
 }
 
