@@ -58,3 +58,11 @@ prompt.addEventListener("keydown", function(e) {
         window.scrollTo(0, document.body.scrollHeight);
     }
 });
+
+writeMSG(`
+Golden Controller presents
+
+ - RICHARD THE WIZARD -
+
+Press enter to begin quest!
+`);
