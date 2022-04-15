@@ -35,5 +35,6 @@ prompt.addEventListener("keydown", function(e) {
         term.innerText += this.innerText;
         writeMSG(tick(this.innerText));
         this.innerText = "";
+        window.scrollTo(0, document.body.scrollHeight);
     }
 });
