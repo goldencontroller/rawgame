@@ -70,6 +70,9 @@ BY A FURIOUS DRAGON!!!!!!!
     }
     var roomData = rooms[playerData.roomAt];
     var sights = `You see items: [${roomData.items.join(", ")}]`;
+    if (roomData.enemies.length) {
+        sights += "\nYou see a " + roomData.enemies[0];
+    }
     var availDirs = [];
     for (var dir of ["north", "south", "east", "west"]) {
         if (roomData[dir]) {
