@@ -2,14 +2,42 @@
     "House": {
         "east": "Plains",
         "west": "Garden",
-        "items": ["book", "wand"]
+        "items": ["book"],
+        "enemies": []
     },
     "Garden": {
         "east": "House",
-        "items": ["shovel"]
+        "items": ["shovel"],
+        "enemies": ["mushroom"]
     },
     "Plains": {
         "west": "House",
-        "items": []
+        "south": "Forest",
+        "items": ["rock"],
+        "enemies": []
+    },
+    "Forest": {
+        "north": "Plains",
+        "east": "Waterfall",
+        "south": "Beach",
+        "items": ["wand"],
+        "enemies": ["giant"]
+    },
+    "Beach": {
+        "north": "Forest",
+        "items": ["key"],
+        "enemies": []
+    },
+    "Waterfall": {
+        "west": "Forest",
+        "east": "Bridge",
+        "items": [],
+        "enemies": ["Hydra"]
+    },
+    "Bridge": {
+        "west": "Waterfall",
+        "east": "Volcano",
+        "items": ["torch"],
+        "enemies": []
     }
 }
