@@ -59,6 +59,7 @@ function tick(input) {
     }
     if (cmd.name == "use") {
         if (playerData.inventory.includes(cmd.param)) {
+            var currRoom = playerData.roomAt;
             switch (cmd.param) {
                 case "book":
                     specmsg = `The book says:
@@ -68,6 +69,57 @@ TRUE WIZARD CAN BE ABLE TO
 OBTAIN IT.  IT IS DEFENDED
 BY A FURIOUS DRAGON!!!!!!!
 `;
+                    break;
+                case "rock":
+                    if (rooms[currRoom].enemies.length) {
+                        if (rooms[currRoom].enemies[0] == "giant") {
+                            specmsg = "You killed the " + rooms[currRoom].enemies[0] + "!\n";
+                            rooms[currRoom].enemies.pop();
+                        }
+                        else {
+                            specmsg = "It has no effect!\n";
+                        }
+                    }
+                    else {
+                        specmsg = "It has no effect!\n";
+                    }
+                    break;
+                case "wand":
+                    if (rooms[currRoom].enemies.length) {
+                        if (rooms[currRoom].enemies[0] == "Hydra") {
+                            specmsg = "You killed the " + rooms[currRoom].enemies[0] + "!\n";
+                            rooms[currRoom].enemies.pop();
+                        }
+                        else {
+                            specmsg = "It has no effect!\n";
+                        }
+                    }
+                    else {
+                        specmsg = "It has no effect!\n";
+                    }
+                    break;
+                case "torch":
+                    if (rooms[currRoom].enemies.length) {
+                        if (rooms[currRoom].enemies[0] == "Dragon") {
+                            specmsg = "You killed the " + rooms[currRoom].enemies[0] + "!\n";
+                            specmsg += "\nYou grab the golden apple from under the dragon's corpse. Use it to win!\n";
+                            playerData.inventory.push("apple");
+                            rooms[currRoom].enemies.pop();
+                        }
+                        else {
+                            specmsg = "It has no effect!\n";
+                        }
+                    }
+                    else {
+                        specmsg = "It has no effect!\n";
+                    }
+                    break;
+                case "apple":
+                    playerData.alive = false;
+                    return "You got food poisoning and died.\n\nGAME OVER\n\nPress Enter to reset";
+                    break;
+                default:
+                    specmsg = "It's no use!\n";
                     break;
             }
         }
