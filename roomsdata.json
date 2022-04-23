@@ -39,5 +39,10 @@
         "east": "Volcano",
         "items": ["torch"],
         "enemies": []
+    },
+    "Volcano": {
+        "west": "Bridge",
+        "items": [],
+        "enemies": ["Dragon"]
     }
 }
