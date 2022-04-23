@@ -20,9 +20,11 @@ var rooms = JSON.parse(request.responseText);
 var playerData = {
     roomAt: "House",
     inventory: [],
-    xp: 0
+    xp: 0,
+    alive: true,
 }
 function tick(input) {
+    if (!playerData.alive) location.reload();
     var specmsg = "";
     var cmd = {
         name: input.split(" ")[0],
@@ -32,6 +34,11 @@ function tick(input) {
         var currRoom = playerData.roomAt;
         var direction = cmd.param;
         if (rooms[currRoom][direction]) {
+            if (rooms[currRoom].enemies.length > 0) {
+                playerData.alive = false;
+                return "As you were trying to flee, you were killed by the " + rooms[currRoom].enemies[0] + ". \n\nGAME OVER\n\nPress Enter to reset";
+
+            }
             playerData.roomAt = rooms[playerData.roomAt][cmd.param];
         }
         else {
@@ -98,5 +105,5 @@ Golden Controller presents
 
  - RICHARD THE WIZARD -
 
-Press enter to begin quest!
+Press Enter to begin quest!
 `);
